@@ -4,15 +4,14 @@ FROM python:3.10-slim
 # Set work directory
 WORKDIR /app
 
-# Install dependencies
+# Upgrade pip and install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy bot code
-COPY a.py .
-
-# Expose logs
-VOLUME ["/app/bot.log"]
+# Ensure your main script is named main.py
+COPY main.py .
 
 # Run the bot
-CMD ["python", "a.py"]
+CMD ["python", "main.py"]

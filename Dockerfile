@@ -7,7 +7,7 @@ WORKDIR /app
 # Upgrade pip and install dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install -r requirements.txt
 
 # Copy bot code
 # Ensure your main script is named main.py
